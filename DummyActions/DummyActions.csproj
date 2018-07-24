@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="md $(ProjectDir)\..\HostApp\bin\Debug\netcoreapp2.1\plugin&#xD;&#xA;copy /Y $(TargetDir)\*.dll $(ProjectDir)\..\HostApp\bin\Debug\netcoreapp2.1\plugin" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceAction.Abstractions\ServiceAction.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
