@@ -11,9 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Protocol.NATS", "Protocol.N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostApp", "HostApp\HostApp.csproj", "{B7C1627D-2103-4688-BA43-342E60FF964E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyActions", "DummyActions\DummyActions.csproj", "{C27CA448-4B3A-4790-BBBC-E648E138BFFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DummyActions", "DummyActions\DummyActions.csproj", "{C27CA448-4B3A-4790-BBBC-E648E138BFFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAction.Abstractions", "ServiceAction.Abstractions\ServiceAction.Abstractions.csproj", "{15F9CC7D-B1F2-43E8-859F-D11337C758E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceAction.Abstractions", "ServiceAction.Abstractions\ServiceAction.Abstractions.csproj", "{15F9CC7D-B1F2-43E8-859F-D11337C758E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E213D158-9B72-4565-874C-660D6A2FE60F}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
