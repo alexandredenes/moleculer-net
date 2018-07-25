@@ -66,6 +66,9 @@ public class HelloService {
    }
 
    public async Task<int> Method2() {
+      //service2.hello is a nodejs service
+      //the second parameter is a JObject with the action parameters (null implies no parameters)
+      //and the third parameter is a JObject with the options (null implies no options)
       var result = await _context.Call("service2.hello", null, null);
       // do something
    }
