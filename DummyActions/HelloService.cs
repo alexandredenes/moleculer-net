@@ -1,5 +1,7 @@
 ﻿using ServiceAction.Abstractions;
 using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DummyActions
@@ -19,11 +21,13 @@ namespace DummyActions
             return a + b;
         }
 
-        public async Task<int> Method2()
+        public List<int> Method2()
         {
-            var result = await _context.Call("service2.hello", null, null);
+            List<int> retVal = new List<int>();
+            for (int x = 0; x < 20; x++)
+                retVal.Add((int)_context.Call("AnotherService.Method3", null, null));
 
-            return 4;
+            return retVal;
         }
 
     }

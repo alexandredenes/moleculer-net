@@ -35,7 +35,13 @@ namespace Protocol
             if (action.Value.info.GetParameters().Length != 0)
                 parms = CreateParams(action.Value.info.GetParameters(), requestMessage);
 
-            object obj = Activator.CreateInstance(action.Value.type, new object[] { _context });
+            bool contextConstructor = action.Value.type.GetConstructor(new Type[]{ _context.GetType()}) != null;
+            object obj;
+            if(contextConstructor)
+                obj = Activator.CreateInstance(action.Value.type, new object[] { _context });
+            else
+                obj = Activator.CreateInstance(action.Value.type, new object[] { });
+
             return action.Value.info.Invoke(obj, parms);
 
         }

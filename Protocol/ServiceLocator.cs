@@ -10,10 +10,18 @@ namespace Protocol
     public class DumbServiceLocator : IServiceLocator
     {
         private List<ServiceEntry> ServiceEntries = new List<ServiceEntry>();
-        
-        public ServiceEntry GetServiceEntry(string serviceName)
+
+        public List<ServiceEntry> GetAllServiceEntries()
         {
-            return ServiceEntries.SingleOrDefault(x => x.ServiceName == serviceName);
+            List<ServiceEntry> retVal = new List<ServiceEntry>();
+            retVal.AddRange(ServiceEntries);
+
+            return retVal;
+        }
+
+        public List<ServiceEntry> GetServiceEntry(string serviceName)
+        {
+            return ServiceEntries.Where(x => x.ServiceName == serviceName).ToList();
         }
 
         public void UpdateNodeInfo(InfoMessage info)

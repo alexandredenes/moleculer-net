@@ -73,7 +73,6 @@ namespace Protocol.Abstractions.Messages
                 action.Cache = false;
                 action.Metric = new Service.Action.Metrics();
                 action.Params = new Dictionary<string, string>();
-                action.Params["parametro"] = "string";
                 aux.Actions[action.Name] = action;
             }
             return retVal;

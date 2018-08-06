@@ -2,6 +2,7 @@
 using NATS.Client;
 using Protocol.Abstractions;
 using Protocol.Abstractions.Messages;
+using Protocol.Abstractions.ServiceLocator;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,11 +20,13 @@ namespace Protocol.NATS
         private IAsyncSubscription _molInfoSubscription;
         private IAsyncSubscription _molTargetedInfoSubscription;
         private IAsyncSubscription _molHeartbeatSubscription;
+        private List<IAsyncSubscription> _molRequestServiceSubscriptions = new List<IAsyncSubscription>();
 
         private Timer _heartbeat;
 
         ServiceInfo _serviceInfo;
         private readonly ILogger _logger;
+        private readonly IServiceLocator _serviceLocator;
 
         public event EventHandler<HeartbeatMessage> HeartbeatReceived;
         public event EventHandler<RequestMessage> RequestReceived;
@@ -31,9 +34,10 @@ namespace Protocol.NATS
         public event EventHandler<InfoMessage> InfoReceived;
         public event EventHandler<ResponseMessage> ResponseReceived;
 
-        public NATSTransporter(ILogger<ITransporter> logger)
+        public NATSTransporter(ILogger<ITransporter> logger, IServiceLocator serviceLocator)
         {
             _logger = logger;
+            _serviceLocator = serviceLocator;
         }
 
 
@@ -74,7 +78,12 @@ namespace Protocol.NATS
                 }
             };
 
-            _molRequestSubscription = _conn.SubscribeAsync("MOL.REQ."+_serviceInfo.ServiceName, handler);
+            _molRequestSubscription = _conn.SubscribeAsync($"MOL.REQ.{_serviceInfo.ServiceName}", handler);
+            foreach(ServiceEntry entry in _serviceLocator.GetAllServiceEntries())
+            {
+                IAsyncSubscription subscription = _conn.SubscribeAsync($"MOL.REQB.{entry.ServiceName}",handler);
+                _molRequestServiceSubscriptions.Add(subscription);
+            }
         }
 
         private void BeginResponseListener()
@@ -170,6 +179,10 @@ namespace Protocol.NATS
             _molTargetedInfoSubscription.Unsubscribe();
             _molRequestSubscription.Unsubscribe();
             _molResponseSubscription.Unsubscribe();
+            foreach(IAsyncSubscription subscription in _molRequestServiceSubscriptions)
+            {
+                subscription.Unsubscribe();
+            }
 
             _conn.Close();
             _logger.LogInformation("NATS Transporter stoped");

@@ -68,7 +68,6 @@ namespace Protocol
 
             _transporter.HeartbeatReceived += _transporter_HeartbeatReceived;
             _transporter.RequestReceived += _transporter_RequestReceived;
-            _transporter.ResponseReceived += _transporter_ResponseReceived;
             _transporter.DiscoverReceived += _transporter_DiscoverReceived;
             _transporter.InfoReceived += _transporter_InfoReceived;
 
@@ -83,11 +82,6 @@ namespace Protocol
 
             DiscoverMessage discoverMessage = DiscoverMessage.Parse(_serviceInfo);
             _transporter.Publish("MOL.DISCOVER", discoverMessage);
-        }
-
-        private void _transporter_ResponseReceived(object sender, ResponseMessage e)
-        {
-            throw new NotImplementedException();
         }
 
         private void _transporter_InfoReceived(object sender, InfoMessage e)
@@ -151,6 +145,9 @@ namespace Protocol
             _serviceInfo.IPList = host.AddressList;
 
             _serviceInfo.LocalServices = _localServices.GetActions();
+
+            InfoMessage localinfo = InfoMessage.Parse(_serviceInfo);
+            _serviceLocator.UpdateNodeInfo(localinfo);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
