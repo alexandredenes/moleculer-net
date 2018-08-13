@@ -4,7 +4,7 @@
 
 *.dtbcache
 *.suo
-/.vs/Protocol/v15/Server/sqlite3
+/.vs
 /HostApp/obj
 /Protocol/bin/Debug
 /Protocol/obj
@@ -18,5 +18,4 @@
 /ServiceAction.Abstractions/bin
 /DummyActions/obj
 /DummyActions/bin
-/.vs/moleculer-net/v15/Server/sqlite3
 
