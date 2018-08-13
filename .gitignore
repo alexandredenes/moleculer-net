@@ -13,4 +13,7 @@
 /Protocol.NATS/obj/Debug/netcoreapp2.1
 /Protocol.NATS/obj
 /HostApp/bin/Debug/netcoreapp2.1
+/ServiceAction.Abstractions/obj
+/DummyActions/obj
+/DummyActions/bin
 /.vs/moleculer-net/v15/Server/sqlite3
