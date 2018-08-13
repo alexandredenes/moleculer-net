@@ -3,6 +3,7 @@
 ################################################################################
 
 *.dtbcache
+*.suo
 /.vs/Protocol/v15/Server/sqlite3
 /HostApp/obj
 /Protocol/bin/Debug
@@ -14,6 +15,8 @@
 /Protocol.NATS/obj
 /HostApp/bin/Debug/netcoreapp2.1
 /ServiceAction.Abstractions/obj
+/ServiceAction.Abstractions/bin
 /DummyActions/obj
 /DummyActions/bin
 /.vs/moleculer-net/v15/Server/sqlite3
+
