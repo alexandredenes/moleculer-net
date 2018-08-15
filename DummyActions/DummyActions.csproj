@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="md $(ProjectDir)\..\HostApp\bin\Debug\netcoreapp2.1\plugin&#xD;&#xA;copy /Y $(TargetDir)\*.dll $(ProjectDir)\..\HostApp\bin\Debug\netcoreapp2.1\plugin" />
+    <Exec Command="md &quot;$(ProjectDir)\..\HostApp\bin\Debug\netcoreapp2.1\plugin&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)\*.dll&quot; &quot;$(ProjectDir)\..\HostApp\bin\Debug\netcoreapp2.1\plugin&quot;" />
   </Target>
 
   <ItemGroup>
