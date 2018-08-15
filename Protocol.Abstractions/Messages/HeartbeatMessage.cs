@@ -12,7 +12,6 @@ namespace Protocol.Abstractions.Messages
         public string Sender { get; private set; }
         public double Cpu { get; private set; }
 
-
         private HeartbeatMessage() { }
 
         public static HeartbeatMessage Parse(ServiceInfo serviceInfo)

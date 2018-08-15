@@ -4,7 +4,7 @@
 
 *.dtbcache
 *.suo
-/.vs
+.vs
 /HostApp/obj
 /Protocol/bin/Debug
 /Protocol/obj

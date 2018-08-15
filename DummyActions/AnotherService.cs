@@ -8,6 +8,7 @@ namespace DummyActions
     public class AnotherService
     {
         static int count = 1;
+
         public int Method3()
         {
             return count++;
