@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ServiceAction.Abstractions
 {
@@ -8,6 +6,11 @@ namespace ServiceAction.Abstractions
     public class ServiceActionAttribute : Attribute
     {
         private string _name;
+
+        public ServiceActionAttribute(string name = null)
+        {
+            Name = name;
+        }
 
         public virtual string Name
         {

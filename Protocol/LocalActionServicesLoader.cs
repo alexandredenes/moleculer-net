@@ -4,46 +4,40 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Protocol
 {
     public class LocalActionServicesLoader
     {
+        private const string PLUGINS_FOLDER_PATH = "plugin";
+
         private Dictionary<string, (Type type, MethodInfo method)> ActionCache = new Dictionary<string, (Type type, MethodInfo method)>();
 
         public LocalActionServicesLoader()
         {
-            string[] fileEntries = Directory.GetFiles("plugin");
+            var fileEntries = Directory.GetFiles(PLUGINS_FOLDER_PATH);
+
             foreach (string fileEntry in fileEntries)
             {
-                Assembly assembly = Assembly.LoadFrom(fileEntry);
-                foreach (Type t in assembly.GetTypes())
+                var assembly = Assembly.LoadFrom(fileEntry);
+
+                foreach (Type type in assembly.GetTypes())
                 {
+                    var serviceAttr = (ServiceActionAttribute)type.GetCustomAttribute(typeof(ServiceActionAttribute));
+
+                    if (serviceAttr != null)
                     {
-                        ServiceActionAttribute serviceAttr = (ServiceActionAttribute)t.GetCustomAttribute(typeof(ServiceActionAttribute));
-                        if (serviceAttr != null)
+                        var serviceName = (serviceAttr.Name != null) ? serviceAttr.Name : type.Name;
+
+                        foreach (var methodInfo in type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance))
                         {
-                            string serviceName;
-                            if (serviceAttr.Name != null)
-                                serviceName = serviceAttr.Name;
-                            else
-                                serviceName = t.Name;
-
-                            foreach (MethodInfo m in t.GetMethods())
+                            if (methodInfo.DeclaringType.Equals(type))
                             {
-                                if (m.DeclaringType.Equals(t))
-                                {
-                                    string actionName = serviceName + ".";
+                                var serviceMethod = (ServiceMethodAttribute)methodInfo.GetCustomAttribute(typeof(ServiceMethodAttribute));
+                                var actionName = serviceMethod != null && serviceMethod.Name != null ? serviceMethod.Name : methodInfo.Name;
+                                var actionIndex = $"{serviceName}.{actionName}";
 
-                                    ServiceMethodAttribute serviceMethod = (ServiceMethodAttribute)m.GetCustomAttribute(typeof(ServiceMethodAttribute));
-                                    if (serviceMethod != null && serviceMethod.Name != null)
-                                        actionName += serviceMethod.Name;
-                                    else
-                                        actionName += m.Name;
-
-                                    ActionCache[actionName] = (type: t, method: m);
-                                }
+                                ActionCache[actionIndex] = (type: type, method: methodInfo);
                             }
                         }
                     }

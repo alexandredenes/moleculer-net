@@ -53,7 +53,7 @@ namespace Protocol.Abstractions.Messages
             retVal.Id = (string)obj["id"];
             retVal.Action = (string)obj["action"];
             retVal.Params = (JObject)obj["params"];
-            retVal.Timeout = (double)obj["timeout"];
+            retVal.Timeout = Convert.ToDouble(obj["timeout"]);
             retVal.Level = (int)obj["level"];
             retVal.Metrics = (bool)obj["metrics"];
             retVal.ParentID = (string)obj["parentID"];

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DummyActions
 {
-    [ServiceAction]
+    [ServiceAction("hello")]
     public class HelloService
     {
         private Context _context;
@@ -16,6 +16,7 @@ namespace DummyActions
             _context = ctx;
         }
 
+        [ServiceMethod("method1")]
         public int Method1(int a, int b)
         {
             return a + b;
