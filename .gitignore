@@ -5,7 +5,6 @@
 *.dtbcache
 *.suo
 .vs
-.github
 /HostApp/obj
 /Protocol/bin/Debug
 /Protocol/obj
