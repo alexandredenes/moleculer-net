@@ -5,7 +5,6 @@ using Protocol.Abstractions.Messages;
 using Protocol.Abstractions.ServiceLocator;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 using System.Timers;
 
