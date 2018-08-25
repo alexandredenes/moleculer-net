@@ -5,17 +5,7 @@
 *.dtbcache
 *.suo
 .vs
-/HostApp/obj
-/Protocol/bin/Debug
-/Protocol/obj
-/Protocol.Abstractions/bin/Debug/netcoreapp2.1
-/Protocol.Abstractions/obj
-/Protocol.NATS/bin/Debug/netcoreapp2.1
-/Protocol.NATS/obj/Debug/netcoreapp2.1
-/Protocol.NATS/obj
-/HostApp/bin/Debug/netcoreapp2.1
-/ServiceAction.Abstractions/obj
-/ServiceAction.Abstractions/bin
-/DummyActions/obj
-/DummyActions/bin
+obj
+bin/Debug
+netcoreapp2.1
 
