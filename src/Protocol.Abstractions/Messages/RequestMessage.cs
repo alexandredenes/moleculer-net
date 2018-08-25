@@ -55,7 +55,7 @@ namespace Protocol.Abstractions.Messages
             retVal.Params = (JObject)obj["params"];
             retVal.Timeout = Convert.ToDouble(obj["timeout"]);
             retVal.Level = (int)obj["level"];
-            retVal.Metrics = (bool)obj["metrics"];
+            retVal.Metrics = string.IsNullOrEmpty(obj["metrics"].ToString()) ? false : (bool)obj["metrics"];
             retVal.ParentID = (string)obj["parentID"];
             retVal.RequestID = (string)obj["requestID"];
             retVal.Ver = (string)obj["ver"];
