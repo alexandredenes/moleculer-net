@@ -37,7 +37,7 @@ namespace HostApp
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddLogging();
-                    services.AddSingleton<IServiceLocator, DumbServiceLocator>();
+                    services.AddSingleton<IServiceLocator, ServiceLocator>();
                     services.AddSingleton<LocalActionServicesLoader>();
                     services.AddSingleton<IServiceExecutor, ServiceExecutor>();
                     services.AddHostedService<MoleculerService>();

@@ -4,9 +4,7 @@ using Protocol.Abstractions;
 using Protocol.Abstractions.Messages;
 using Protocol.Abstractions.ServiceLocator;
 using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
@@ -139,7 +137,7 @@ namespace Protocol
 
         private void FillHostInfo()
         {
-            _serviceInfo.HostName = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
+            _serviceInfo.HostName = Environment.GetEnvironmentVariable("COMPUTERNAME");
             _serviceInfo.ServiceName = _serviceInfo.HostName + "-" + (new Random().Next(100000) + 1);
             var host = Dns.GetHostEntry(Dns.GetHostName());
             _serviceInfo.IPList = host.AddressList;

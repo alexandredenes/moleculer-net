@@ -8,7 +8,7 @@ namespace Protocol.Abstractions.ServiceLocator
     public interface IServiceLocator
     {
         void UpdateNodeInfo(InfoMessage info);
-        List<ServiceEntry> GetServiceEntry(string serviceName);
-        List<ServiceEntry> GetAllServiceEntries();
+        IList<ServiceEntry> GetServiceEntry(string serviceName);
+        IList<ServiceEntry> GetAllServiceEntries();
     }
 }

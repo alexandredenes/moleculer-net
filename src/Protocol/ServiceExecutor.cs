@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
 using Protocol.Abstractions;
 using Protocol.Abstractions.Messages;
 using ServiceAction.Abstractions;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Protocol
 {
