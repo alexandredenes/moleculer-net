@@ -1,17 +1,15 @@
 ﻿using Protocol.Abstractions.Messages;
 using Protocol.Abstractions.ServiceLocator;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace Protocol
 {
-    public class DumbServiceLocator : IServiceLocator
+    public class ServiceLocator : IServiceLocator
     {
         private List<ServiceEntry> ServiceEntries = new List<ServiceEntry>();
 
-        public List<ServiceEntry> GetAllServiceEntries()
+        public IList<ServiceEntry> GetAllServiceEntries()
         {
             List<ServiceEntry> retVal = new List<ServiceEntry>();
             retVal.AddRange(ServiceEntries);
@@ -19,7 +17,7 @@ namespace Protocol
             return retVal;
         }
 
-        public List<ServiceEntry> GetServiceEntry(string serviceName)
+        public IList<ServiceEntry> GetServiceEntry(string serviceName)
         {
             return ServiceEntries.Where(x => x.ServiceName == serviceName).ToList();
         }

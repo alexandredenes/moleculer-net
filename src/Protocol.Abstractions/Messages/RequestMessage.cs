@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Protocol.Abstractions.Messages.Converters;
 using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Text;
 
 namespace Protocol.Abstractions.Messages
@@ -50,6 +47,7 @@ namespace Protocol.Abstractions.Messages
             RequestMessage retVal = new RequestMessage();
 
             JObject obj = JObject.Parse(Encoding.Default.GetString(data));
+
             retVal.Id = (string)obj["id"];
             retVal.Action = (string)obj["action"];
             retVal.Params = (JObject)obj["params"];
@@ -60,12 +58,14 @@ namespace Protocol.Abstractions.Messages
             retVal.RequestID = (string)obj["requestID"];
             retVal.Ver = (string)obj["ver"];
             retVal.Sender = (string)obj["sender"];
+
             return retVal;
         }
 
         public static RequestMessage Create(string action, JObject parms, string contextId)
         {
             RequestMessage retVal = new RequestMessage();
+
             retVal.Action = action;
             retVal.Id = contextId;
             retVal.Level = 2;

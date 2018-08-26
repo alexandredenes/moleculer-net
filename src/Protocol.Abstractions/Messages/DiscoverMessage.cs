@@ -18,7 +18,7 @@ namespace Protocol.Abstractions.Messages
 
         public static DiscoverMessage Parse(byte[] data)
         {
-            string strData = Encoding.Default.GetString(data); ;
+            string strData = Encoding.Default.GetString(data);
             JObject obj = JObject.Parse(strData);
             DiscoverMessage retVal = new DiscoverMessage()
             {
