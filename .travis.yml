@@ -1,7 +1,7 @@
 language: csharp
 solution: moleculer-net.sln
 mono: none
-dotnet: 2.1.103
+dotnet: 2.0.3
 script: 
    - dotnet restore
    
