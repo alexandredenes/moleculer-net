@@ -1,5 +1,7 @@
 # Moleculer for Net
 
+![Build Status](https://api.travis-ci.org/alexandredenes/moleculer-net.svg?branch=master)
+
 
 .NET Core 2.1 implementation of the [Moleculer microservices framework](http://moleculer.services/).
 This is a work in progress aimed to be completely compatible with the NodeJS-based Moleculer (see Status below).
