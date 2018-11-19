@@ -55,9 +55,9 @@ namespace Protocol.Abstractions.Messages
         private static List<Service> LoadServices(ServiceInfo serviceInfo)
         {
             var retVal = new List<Service>();
-            foreach (string s in serviceInfo.LocalServices)
+            foreach ((string name, Dictionary<string,string> parms) s in serviceInfo.LocalServices)
             {
-                string serviceName = s.Split('.')[0];
+                string serviceName = s.name.Split('.')[0];
                 Service aux = retVal.SingleOrDefault(x => x.Name == serviceName);
                 if (aux == null)
                 {
@@ -69,10 +69,10 @@ namespace Protocol.Abstractions.Messages
                     aux.Metadata = new object();
                 }
                 Service.Action action = new Service.Action();
-                action.Name = s;
+                action.Name = s.name;
                 action.Cache = false;
                 action.Metric = new Service.Action.Metrics();
-                action.Params = new Dictionary<string, string>();
+                action.Params = s.parms;
                 aux.Actions[action.Name] = action;
             }
             return retVal;

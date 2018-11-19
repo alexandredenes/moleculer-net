@@ -11,6 +11,6 @@ namespace Protocol.Abstractions
         public string ServiceName { get; set; }
         public IPAddress[] IPList { get; set; }
         public string HostName { get; set; }
-        public List<string> LocalServices { get; set; }
+        public List<(string name, Dictionary<string,string> parms)> LocalServices { get; set; }
     }
 }

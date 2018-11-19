@@ -1,0 +1,180 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean dummy",
+            "command": "dotnet clean",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/DummyActions"
+                 
+            }
+        },
+        {
+            "label": "build dummy",
+            "command": "dotnet build -o ${workspaceRoot}/bin/plugin",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/DummyActions"
+                 
+            },
+        },
+        {
+            "label": "clean protocol.abstractions",
+            "command": "dotnet clean",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/Protocol.Abstractions"
+                 
+            }
+        },
+        {
+            "label": "build protocol.abstractions",
+            "command": "dotnet build -o ${workspaceRoot}/bin",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/Protocol.Abstractions"
+                 
+            },
+        },
+
+        
+        {
+            "label": "clean serviceaction.abstractions",
+            "command": "dotnet clean",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/ServiceAction.Abstractions"
+                 
+            }
+        },
+        {
+            "label": "build serviceaction.abstractions",
+            "command": "dotnet build -o ${workspaceRoot}/bin",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/ServiceAction.Abstractions"
+                 
+            },
+        },
+        {
+            "label": "clean protocol",
+            "command": "dotnet clean",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/Protocol"
+                 
+            }
+        },
+        {
+            "label": "build protocol",
+            "command": "dotnet build -o ${workspaceRoot}/bin",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/Protocol"
+                 
+            },
+        },
+        {
+            "label": "clean protocol.nats",
+            "command": "dotnet clean",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/Protocol.NATS"
+                 
+            }
+        },
+        {
+            "label": "build protocol.nats",
+            "command": "dotnet build -o ${workspaceRoot}/bin",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/Protocol.NATS"
+                 
+            },
+        },
+        {
+            "label": "clean hostapp",
+            "command": "dotnet clean",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/HostApp"
+                 
+            }
+        },
+        {
+            "label": "build hostapp",
+            "command": "dotnet build -o ${workspaceRoot}/bin",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceRoot}/src/HostApp"
+                 
+            },
+        }
+
+
+
+    ]
+}

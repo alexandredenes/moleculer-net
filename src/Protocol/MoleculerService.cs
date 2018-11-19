@@ -137,7 +137,7 @@ namespace Protocol
 
         private void FillHostInfo()
         {
-            _serviceInfo.HostName = Environment.GetEnvironmentVariable("COMPUTERNAME");
+            _serviceInfo.HostName = Environment.MachineName;
             _serviceInfo.ServiceName = _serviceInfo.HostName + "-" + (new Random().Next(100000) + 1);
             var host = Dns.GetHostEntry(Dns.GetHostName());
             _serviceInfo.IPList = host.AddressList;

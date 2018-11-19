@@ -19,6 +19,8 @@ namespace Protocol
 
             foreach (string fileEntry in fileEntries)
             {
+                if(!fileEntry.EndsWith(".dll")) continue;
+                
                 Assembly assembly = Assembly.LoadFrom(fileEntry);
 
                 foreach (Type type in assembly.GetTypes())
@@ -53,9 +55,25 @@ namespace Protocol
             return null;
         }
 
-        public List<string> GetActions()
+        public List<(string,Dictionary<string,string>)>GetActions()
         {
-            return ActionCache.Keys.ToList();
+            List<(string name,Dictionary<string,string> parms)> retVal = new List<(string,Dictionary<string,string>)>();
+            foreach(string action in ActionCache.Keys.ToList()){
+                MethodInfo theMethod = ActionCache[action].method;
+                Dictionary<string,string> theParams = new Dictionary<string,string>();
+                 foreach(ParameterInfo pInfo in theMethod.GetParameters()) {
+                    theParams[pInfo.Name] = ConvertParam(pInfo.ParameterType);
+                }
+                retVal.Add((action,theParams));
+            }
+            return retVal;
+        }
+
+        private string ConvertParam(Type parameterType)
+        {
+            if(parameterType.Equals(typeof(string)))
+                return "string";
+            return "number";
         }
     }
 }
